@@ -55,6 +55,19 @@ namespace UserRegistrationProblemMsTest
             // Act 
             bool result = validatePattern.MobileNumberValidation(message);
             // Assert
+            Assert.AreEqual(expected, result);   
+        }
+
+        [TestMethod]
+        public void TestPasswordByRule1()
+        {
+            // Arrange
+            string message = "abcdefghi";
+            bool expected = true;
+            ValidateDetails validatePattern = new ValidateDetails();
+            // Act 
+            bool result = validatePattern.Password1Validation(message);
+            // Assert
             Assert.AreEqual(expected, result);
         }
     }
