@@ -14,6 +14,14 @@ namespace UserRegistrationProblem
                 Console.WriteLine("Enter a valid first name : ");
                 firstName = Console.ReadLine();
             }
+
+            Console.WriteLine("Enter the user last name :");
+            string lastName = Console.ReadLine();
+            while (!details.LastNameValidation(lastName))
+            {
+                Console.WriteLine("Enter a valid last name : ");
+                lastName = Console.ReadLine();
+            }
         }
     }
 }

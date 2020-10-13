@@ -15,6 +15,14 @@ namespace UserRegistrationProblem
             else
                 return false;
         }
+        public Boolean LastNameValidation(string lastName)
+        {
+            Regex regex = new Regex("^[A-Z][a-z]{2,}$");
+            if (regex.IsMatch(lastName))
+                return true;
+            else
+                return false;
+        }
     }
 }
 
