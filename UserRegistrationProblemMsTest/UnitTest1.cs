@@ -27,7 +27,7 @@ namespace UserRegistrationProblemMsTest
             bool expected = true;
             ValidateDetails validatePattern = new ValidateDetails();
             // Act 
-            bool result = validatePattern.FirstNameValidation(message);
+            bool result = validatePattern.LastNameValidation(message);
             // Assert
             Assert.AreEqual(expected, result);
         }
