@@ -22,6 +22,14 @@ namespace UserRegistrationProblem
                 Console.WriteLine("Enter a valid last name : ");
                 lastName = Console.ReadLine();
             }
+
+            Console.WriteLine("Enter the user Email Id :");
+            string emailId = Console.ReadLine();
+            while (!details.EmailValidation(emailId))
+            {
+                Console.WriteLine("Enter a valid Email Id : ");
+                emailId = Console.ReadLine();
+            }
         }
     }
 }
