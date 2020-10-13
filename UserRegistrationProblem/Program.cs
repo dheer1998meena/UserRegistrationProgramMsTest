@@ -61,6 +61,15 @@ namespace UserRegistrationProblem
                 Console.WriteLine("Enter a valid password : ");
                 password2 = Console.ReadLine();
             }
+
+            // UC7 Password validation by rule 3
+            Console.WriteLine("Enter the user password :");
+            string password3 = Console.ReadLine();
+            while (!details.Password1Validation(password3))
+            {
+                Console.WriteLine("Enter a valid password : ");
+                password3 = Console.ReadLine();
+            }
         }
     }
 }
