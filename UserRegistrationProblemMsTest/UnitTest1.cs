@@ -27,7 +27,20 @@ namespace UserRegistrationProblemMsTest
             bool expected = true;
             ValidateDetails validatePattern = new ValidateDetails();
             // Act 
-            bool result = validatePattern.LastNameValidation(message);
+            bool result = validatePattern.FirstNameValidation(message);
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestEmail()
+        {
+            // Arrange
+            string message = "abc.xyz@gmail.com";
+            bool expected = true;
+            ValidateDetails validatePattern = new ValidateDetails();
+            // Act 
+            bool result = validatePattern.EmailValidation(message);
             // Assert
             Assert.AreEqual(expected, result);
         }
