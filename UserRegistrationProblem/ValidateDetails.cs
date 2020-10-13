@@ -76,6 +76,16 @@ namespace UserRegistrationProblem
             else
                 return false;
         }
+
+        // UC8 Password validation by rule 4
+        public Boolean Password4Validation(string password4)
+        {
+            Regex regex = new Regex("^(?=.*[A-Z])(?=.*[0-9])(?=.*[^0-9a-zA-Z])(?!.*[^0-9a-zA-Z].*[^0-9a-zA-Z]).{8,}$");
+            if (regex.IsMatch(password4))
+                return true;
+            else
+                return false;
+        }
     }
 }
 
