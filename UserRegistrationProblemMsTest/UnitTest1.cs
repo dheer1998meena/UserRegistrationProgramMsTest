@@ -134,7 +134,7 @@ namespace UserRegistrationProblemMsTest
             Assert.AreEqual(expected, result);
         }
 
-        // UC10 Validation By unit Test
+        // UC10 Validation check by unit Test
         [TestMethod]
         public void TestMethod1()
         {
