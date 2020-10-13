@@ -133,5 +133,26 @@ namespace UserRegistrationProblemMsTest
             //Assert
             Assert.AreEqual(expected, result);
         }
+
+        // UC10 Validation By unit Test
+        [TestMethod]
+        public void TestMethod1()
+        {
+            string expected = "HAPPY";
+            string input = "I am HAPPY";
+            ValidateDetails validatePattern = new ValidateDetails();
+            string actual = validatePattern.MoodAnalyser(input);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestMethod2()
+        {
+            string expected = "SAD";
+            string input = "I am SAD";
+            ValidateDetails validatePattern = new ValidateDetails();
+            string actual = validatePattern.MoodAnalyser(input);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

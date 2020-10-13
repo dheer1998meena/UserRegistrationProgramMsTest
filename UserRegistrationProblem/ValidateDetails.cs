@@ -93,6 +93,15 @@ namespace UserRegistrationProblem
         {
             return Regex.IsMatch(email, Email_Regex);
         }
+
+        // UC10 Validation check by unit test
+        public string MoodAnalyser(string input)
+        {
+            if (input.Contains("HAPPY"))
+                return "HAPPY";
+            else
+                return "SAD";
+        }
     }
 }
 
