@@ -70,5 +70,18 @@ namespace UserRegistrationProblemMsTest
             // Assert
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TestPasswordByRule2()
+        {
+            // Arrange
+            string message = "ABHJhddaf";
+            bool expected = true;
+            ValidateDetails validatePattern = new ValidateDetails();
+            // Act 
+            bool result = validatePattern.Password2Validation(message);
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
     }
 }
