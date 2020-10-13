@@ -6,6 +6,7 @@ namespace UserRegistrationProblemMsTest
     [TestClass]
     public class UnitTest1
     {
+        // UC1 Valid first name
         [TestMethod]
         public void TestFirstName()
         {
@@ -19,6 +20,7 @@ namespace UserRegistrationProblemMsTest
             Assert.AreEqual(expected, result);
         }
 
+        // UC2 valid last name.
         [TestMethod]
         public void TestLastName()
         {
@@ -32,6 +34,7 @@ namespace UserRegistrationProblemMsTest
             Assert.AreEqual(expected, result);
         }
 
+        // UC3 Email Id validation
         [TestMethod]
         public void TestEmail()
         {
@@ -45,6 +48,7 @@ namespace UserRegistrationProblemMsTest
             Assert.AreEqual(expected, result);
         }
 
+        // UC4 Mobile number validation
         [TestMethod]
         public void TestMobileNumber()
         {
@@ -58,6 +62,7 @@ namespace UserRegistrationProblemMsTest
             Assert.AreEqual(expected, result);   
         }
 
+        // UC5 Password validation by rule 1
         [TestMethod]
         public void TestPasswordByRule1()
         {
@@ -71,6 +76,7 @@ namespace UserRegistrationProblemMsTest
             Assert.AreEqual(expected, result);
         }
 
+        // UC6 Password validation by rule 2
         [TestMethod]
         public void TestPasswordByRule2()
         {
@@ -84,6 +90,7 @@ namespace UserRegistrationProblemMsTest
             Assert.AreEqual(expected, result);
         }
 
+        // UC7 Password validation by rule 3
         [TestMethod]
         public void TestPasswordByRule3()
         {
@@ -97,6 +104,7 @@ namespace UserRegistrationProblemMsTest
             Assert.AreEqual(expected, result);
         }
 
+        // UC8 Password validation by rule 4
         [TestMethod]
         public void TestPasswordByRule4()
         {
@@ -107,6 +115,22 @@ namespace UserRegistrationProblemMsTest
             // Act 
             bool result = validatePattern.Password4Validation(message);
             // Assert
+            Assert.AreEqual(expected, result);
+        }
+
+        // UC9 Valid all email samples
+        [TestMethod]
+        [DataRow("dheer@gmail.com", true)]
+        [DataRow("dheer-1999@gmail.com", true)]
+        [DataRow("dheer@.com.in", false)]
+        public void TestEmails(string message, bool expected)
+        {
+            //Arrange
+            ValidateDetails validatePattern = new ValidateDetails();
+
+            //Act
+            bool result = validatePattern.ValidateEmailSet(message);
+            //Assert
             Assert.AreEqual(expected, result);
         }
     }

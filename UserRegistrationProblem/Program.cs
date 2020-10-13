@@ -79,6 +79,13 @@ namespace UserRegistrationProblem
                 Console.WriteLine("Enter a valid password : ");
                 password4 = Console.ReadLine();
             }
+
+            // UC9 Valid all email sample
+
+            Console.WriteLine("Registration Successful.");
+            Console.WriteLine("Name :" + firstName + " " + lastName);
+            Console.WriteLine("Email ID : " + emailId);
+            Console.WriteLine("Mobile Number : " + mobileNumber);
         }
     }
 }
