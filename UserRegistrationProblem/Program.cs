@@ -6,9 +6,115 @@ namespace UserRegistrationProblem
     {
         static void Main(string[] args)
         {
-            ValidateDetails details = new ValidateDetails();
+            ValidateDetails val = new ValidateDetails();
+
+            string firstname, lastname, email, MobileNo;
+            while (true)
+            {
+                Console.WriteLine("Enter your First Name : ");
+                firstname = Console.ReadLine();
+                try
+                {
+                    if (!val.FirstNameValidation(firstname))
+                    {
+                        throw new CustomException("Invalid first name");
+                    }
+                    break;
+                }
+                catch (CustomException ce)
+                {
+                    Console.WriteLine(ce.Message);
+                }
+
+            }
+
+            while (true)
+            {
+                Console.WriteLine("Enter your Last Name : ");
+                lastname = Console.ReadLine();
+                try
+                {
+                    if (!val.LastNameValidation(lastname))
+                    {
+                        throw new CustomException("Invalid last name");
+                    }
+                    break;
+                }
+                catch (CustomException ce)
+                {
+                    Console.WriteLine(ce.Message);
+                }
+
+            }
+
+            while (true)
+            {
+                Console.WriteLine("Enter your emailId : ");
+                email = Console.ReadLine();
+                try
+                {
+                    if (!val.EmailValidation(email))
+                    {
+                        throw new CustomException("Invalid emailId");
+                    }
+                    break;
+                }
+                catch (CustomException ce)
+                {
+                    Console.WriteLine(ce.Message);
+                }
+            }
+
+            while (true)
+            {
+                Console.WriteLine("Enter your mobile number : ");
+                MobileNo = Console.ReadLine();
+                try
+                {
+                    if (!val.MobileNumberValidation(MobileNo))
+                    {
+                        throw new CustomException("Invalid mobile number");
+                    }
+                    break;
+                }
+
+                catch (CustomException ce)
+                {
+                    Console.WriteLine(ce.Message);
+                }
+            }
+
+            while (true)
+            {
+                Console.WriteLine("Enter a password : ");
+                string password = Console.ReadLine();
+                try
+                {
+                    if (!val.Password4Validation(password))
+                    {
+                        throw new CustomException("Invalid password");
+                    }
+                    break;
+                }
+                catch (CustomException ce)
+                {
+                    Console.WriteLine(ce.Message);
+                }
+            }
+
+
+
+
+            //UC1 First Name Validation
+            /* Console.WriteLine("Enter the first name of the user");
+             String firstName = Console.ReadLine();
+             while (!val.FirstNameValidation(firstName))
+             {
+                 Console.WriteLine("Enter a valid First Name with first letter as Capital");
+                 firstName = Console.ReadLine();
+             }
             
-            // UC1 First name validation
+          /*  // UC1 First name validation
             Console.WriteLine("Enter the user first name :");
             string firstName = Console.ReadLine();
             while (!details.FirstNameValidation(firstName))
@@ -87,5 +193,9 @@ namespace UserRegistrationProblem
             Console.WriteLine("Email ID : " + emailId);
             Console.WriteLine("Mobile Number : " + mobileNumber);
         }
+          */
+        }
     }
 }
+        
+    
