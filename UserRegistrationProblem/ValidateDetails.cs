@@ -31,6 +31,14 @@ namespace UserRegistrationProblem
             else
                 return false;
         }
+        public Boolean MobileNumberValidation(string mobileNumber)
+        {
+            Regex regex = new Regex("^[0-9]{2}[ ][0-9]{10}$");
+            if (regex.IsMatch(mobileNumber))
+                return true;
+            else
+                return false;
+        }
     }
 }
 
