@@ -66,6 +66,16 @@ namespace UserRegistrationProblem
             else
                 return false;
         }
+
+        // UC7 Password validation by rule 3
+        public Boolean Password3Validation(string password3)
+        {
+            Regex regex = new Regex("^(?=.*[A-Z])(?=.*[0-9]).{8,}$");
+            if (regex.IsMatch(password3))
+                return true;
+            else
+                return false;
+        }
     }
 }
 
