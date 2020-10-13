@@ -44,5 +44,18 @@ namespace UserRegistrationProblemMsTest
             // Assert
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TestMobileNumber()
+        {
+            // Arrange
+            string message = "91 1122334455";
+            bool expected = true;
+            ValidateDetails validatePattern = new ValidateDetails();
+            // Act 
+            bool result = validatePattern.MobileNumberValidation(message);
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
     }
 }
