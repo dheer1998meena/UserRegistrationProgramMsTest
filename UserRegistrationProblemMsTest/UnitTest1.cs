@@ -133,5 +133,22 @@ namespace UserRegistrationProblemMsTest
             //Assert
             Assert.AreEqual(expected, result);
         }
+
+        //UC11 Test For Multiple Entry
+        [TestMethod]
+        [DataRow("dheer@gmail.com")]
+        [DataRow("dheer1999@gmail.com")]
+        [DataRow("dheer@gmail.com")]
+        public void TestMultipleEntry(string email)
+        {
+            //Arrange
+            ValidateDetails validatePattern = new ValidateDetails();
+            bool expected = true;
+
+            //Act
+            bool result = validatePattern.EmailValidation(email);
+            //Assert
+            Assert.AreEqual(expected, result);
+        }
     }
 }

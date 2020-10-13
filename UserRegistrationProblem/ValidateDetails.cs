@@ -30,7 +30,7 @@ namespace UserRegistrationProblem
         // Email Id validation
         public Boolean EmailValidation(string emailId)
         {
-            Regex regex = new Regex("^[a-zA-Z]+([.+_-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]+([.][a-zA-Z]{2})?$");
+            Regex regex = new Regex("^[0-9A-Za-z]+([+-_.][a-zA-Z]+)*[@][0-9A-Za-z]+[.][0-9A-Za-z]{2,3}$");
             if (regex.IsMatch(emailId))
                 return true;
             else
