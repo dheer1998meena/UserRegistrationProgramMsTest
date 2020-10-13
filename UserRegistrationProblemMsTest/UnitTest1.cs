@@ -96,5 +96,18 @@ namespace UserRegistrationProblemMsTest
             // Assert
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TestPasswordByRule4()
+        {
+            // Arrange
+            string message = "Asd9@ghh";
+            bool expected = true;
+            ValidateDetails validatePattern = new ValidateDetails();
+            // Act 
+            bool result = validatePattern.Password4Validation(message);
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
     }
 }

@@ -56,7 +56,7 @@ namespace UserRegistrationProblem
             // UC6 Password validation by rule 2
             Console.WriteLine("Enter the user password :");
             string password2 = Console.ReadLine();
-            while (!details.Password1Validation(password2))
+            while (!details.Password2Validation(password2))
             {
                 Console.WriteLine("Enter a valid password : ");
                 password2 = Console.ReadLine();
@@ -65,10 +65,19 @@ namespace UserRegistrationProblem
             // UC7 Password validation by rule 3
             Console.WriteLine("Enter the user password :");
             string password3 = Console.ReadLine();
-            while (!details.Password1Validation(password3))
+            while (!details.Password3Validation(password3))
             {
                 Console.WriteLine("Enter a valid password : ");
                 password3 = Console.ReadLine();
+            }
+
+            // UC8 Password validation by rule 4
+            Console.WriteLine("Enter the user password :");
+            string password4 = Console.ReadLine();
+            while (!details.Password4Validation(password4))
+            {
+                Console.WriteLine("Enter a valid password : ");
+                password4 = Console.ReadLine();
             }
         }
     }
