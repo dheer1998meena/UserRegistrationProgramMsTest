@@ -6,153 +6,124 @@ namespace UserRegistrationProblemMsTest
     [TestClass]
     public class UnitTest1
     {
-        // UC1 Valid first name
+        public static bool actual = true;
+
+        // To test first name
+        [TestCategory("firstName")]
         [TestMethod]
-        public void TestFirstName()
+        public void TestInputForFirstName()
         {
             // Arrange
-            string message = "Dheer";
-            bool expected = true;
-            ValidateDetails validatePattern = new ValidateDetails();
-            // Act 
-            bool result = validatePattern.FirstNameValidation(message);
-            // Assert
-            Assert.AreEqual(expected, result);
+            ValidateDetails validate = new ValidateDetails();
+            try
+            {
+                // Act 
+                string expected = validate.IsValidFirstName("Dheer");
+            }
+            catch (UserRegistrationCustomException ex)
+            {
+                // Assert
+                Assert.AreEqual("Invalid first name", ex.Message);
+            }
         }
 
-        // UC2 valid last name.
+        // To test last name.
+        [TestCategory("lasttName")]
         [TestMethod]
-        public void TestLastName()
+        public void TestInputForLastName()
         {
             // Arrange
-            string message = "Singh";
-            bool expected = true;
-            ValidateDetails validatePattern = new ValidateDetails();
-            // Act 
-            bool result = validatePattern.FirstNameValidation(message);
-            // Assert
-            Assert.AreEqual(expected, result);
+            ValidateDetails validate = new ValidateDetails();
+            try
+            {
+                // Act 
+                string expected = validate.IsValidLastName("Singh");
+            }
+            catch (UserRegistrationCustomException ex)
+            {
+                // Assert
+                Assert.AreEqual("Invalid last name", ex.Message);
+            }
         }
 
-        // UC3 Email Id validation
+        // To test Email Id validation
+        [TestCategory("emailId")]
         [TestMethod]
-        public void TestEmail()
+        public void TestInputForEmailId()
         {
             // Arrange
-            string message = "abc.xyz@gmail.com";
-            bool expected = true;
-            ValidateDetails validatePattern = new ValidateDetails();
-            // Act 
-            bool result = validatePattern.EmailValidation(message);
-            // Assert
-            Assert.AreEqual(expected, result);
+            ValidateDetails validate = new ValidateDetails();
+            try
+            {
+                // Act 
+                string expected = validate.IsValidEmailId("xyz.abc@gamil.com");
+            }
+            catch (UserRegistrationCustomException ex)
+            {
+                // Assert
+                Assert.AreEqual("Invailid eamil Id", ex.Message);
+            }
         }
 
-        // UC4 Mobile number validation
+        // To test mobile number 
+        [TestCategory("mobileNumber")]
         [TestMethod]
-        public void TestMobileNumber()
+        public void TestInputForMobileNumber()
         {
             // Arrange
-            string message = "91 1122334455";
-            bool expected = true;
-            ValidateDetails validatePattern = new ValidateDetails();
-            // Act 
-            bool result = validatePattern.MobileNumberValidation(message);
-            // Assert
-            Assert.AreEqual(expected, result);   
+            ValidateDetails validate = new ValidateDetails();
+            try
+            {
+                // Act 
+                string expected = validate.IsValidMobileNumber("91 1236459871");
+            }
+            catch (UserRegistrationCustomException ex)
+            {
+                // Assert
+                Assert.AreEqual("Invailid mobile number", ex.Message);
+            }
         }
 
-        // UC5 Password validation by rule 1
+        // To test Password validation 
+        [TestCategory("password")]
         [TestMethod]
-        public void TestPasswordByRule1()
+        public void TestInputForPassword()
         {
             // Arrange
-            string message = "abcdefghi";
-            bool expected = true;
-            ValidateDetails validatePattern = new ValidateDetails();
-            // Act 
-            bool result = validatePattern.Password1Validation(message);
-            // Assert
-            Assert.AreEqual(expected, result);
+            ValidateDetails validate = new ValidateDetails();
+            try
+            {
+                // Act 
+                string expected = validate.IsValidPassword("Djj@1998");
+            }
+            catch (UserRegistrationCustomException ex)
+            {
+                // Assert
+                Assert.AreEqual("Invalid password", ex.Message);
+            }
         }
 
-        // UC6 Password validation by rule 2
-        [TestMethod]
-        public void TestPasswordByRule2()
-        {
-            // Arrange
-            string message = "ABHJhddaf";
-            bool expected = true;
-            ValidateDetails validatePattern = new ValidateDetails();
-            // Act 
-            bool result = validatePattern.Password2Validation(message);
-            // Assert
-            Assert.AreEqual(expected, result);
-        }
+        // To Test Case For Multiple Email Entries
 
-        // UC7 Password validation by rule 3
+        [DataRow("dheerh@gmail.co.in")]
+        [DataRow("dheer-singh@gmail.co.in")]
+        [DataRow("dheersingh@gmail.co.us")]
+        [TestCategory("Validate Multiple E-Mail")]
         [TestMethod]
-        public void TestPasswordByRule3()
-        {
-            // Arrange
-            string message = "ABH95ddaf";
-            bool expected = true;
-            ValidateDetails validatePattern = new ValidateDetails();
-            // Act 
-            bool result = validatePattern.Password3Validation(message);
-            // Assert
-            Assert.AreEqual(expected, result);
-        }
-
-        // UC8 Password validation by rule 4
-        [TestMethod]
-        public void TestPasswordByRule4()
-        {
-            // Arrange
-            string message = "Asd9@ghh";
-            bool expected = true;
-            ValidateDetails validatePattern = new ValidateDetails();
-            // Act 
-            bool result = validatePattern.Password4Validation(message);
-            // Assert
-            Assert.AreEqual(expected, result);
-        }
-
-        // UC9 Valid all email samples
-        [TestMethod]
-        [DataRow("dheer@gmail.com", true)]
-        [DataRow("dheer-1999@gmail.com", true)]
-        [DataRow("dheer@.com.in", false)]
-        public void TestEmails(string message, bool expected)
+        public void TestingInputForMultipleEmailId(string emailId)
         {
             //Arrange
-            ValidateDetails validatePattern = new ValidateDetails();
-
-            //Act
-            bool result = validatePattern.ValidateEmailSet(message);
-            //Assert
-            Assert.AreEqual(expected, result);
+            ValidateDetails validate = new ValidateDetails();
+            try
+            {
+                string expected = validate.IsValidEmailId(emailId);
+            }
+            catch (UserRegistrationCustomException ex)
+            {
+                //Assert
+                Assert.AreEqual("Invaild  eamil Id", ex.Message);
+            }
         }
 
-        // UC10 Validation check by unit Test
-        [TestMethod]
-        public void TestMethod1()
-        {
-            string expected = "HAPPY";
-            string input = "I am HAPPY";
-            ValidateDetails validatePattern = new ValidateDetails();
-            string actual = validatePattern.MoodAnalyser(input);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void TestMethod2()
-        {
-            string expected = "SAD";
-            string input = "I am SAD";
-            ValidateDetails validatePattern = new ValidateDetails();
-            string actual = validatePattern.MoodAnalyser(input);
-            Assert.AreEqual(expected, actual);
-        }
     }
 }

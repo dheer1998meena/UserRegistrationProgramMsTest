@@ -7,101 +7,101 @@ namespace UserRegistrationProblem
 {
     public class ValidateDetails
     {
+        public string firstName;
+        public string lastName;
+        public string mobileNumber;
+        public string emailId;
+        public string password;
+
+        public static string FIRSTNAME_REGEX = "^[A-Z][a-z]{2,}$";
+        public static string LASTNAME_REGEX = "^[A-Z][a-z]{2,}$";
+        public static string EMAIL_REGEX = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+        public static string MOBILENUMBER_REGEX = "^[0-9]{2}[ ][0-9]{10}$";
+        public static string PASSWORD_REGEX = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[^0-9a-zA-Z])(?!.*[^0-9a-zA-Z].*[^0-9a-zA-Z]).{8,}$";
+
         // First name validation
-        public Boolean FirstNameValidation(string firstName)
+        public string IsValidFirstName(string firstName)
         {
-            Regex regex = new Regex("^[A-Z][a-z]{2,}$");
-            if (regex.IsMatch(firstName))
-                return true;
-            else
-                return false;
+            try
+            {
+                if (Regex.IsMatch(firstName, FIRSTNAME_REGEX))
+                    return "Correct Entry";
+                else
+                    throw new Exception();
+            }
+            catch
+            {
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.WRONG_FIRSTNAME, "invalid first name");
+
+            }
         }
 
         // Last name validation
-        public Boolean LastNameValidation(string lastName)
+        public string IsValidLastName(string lastName)
         {
-            Regex regex = new Regex("^[A-Z][a-z]{2,}$");
-            if (regex.IsMatch(lastName))
-                return true;
-            else
-                return false;
+            try
+            {
+                if (Regex.IsMatch(lastName, LASTNAME_REGEX))
+                    return "Correct Entry";
+                else
+                    throw new Exception();
+            }
+            catch
+            {
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.WRONG_LASTNAME, "invalid last name");
+
+            }
         }
 
         // Email Id validation
-        public Boolean EmailValidation(string emailId)
+        public string IsValidEmailId(string emailId)
         {
-            Regex regex = new Regex("^[a-zA-Z]+([.+_-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]+([.][a-zA-Z]{2})?$");
-            if (regex.IsMatch(emailId))
-                return true;
-            else
-                return false;
+            try
+            {
+                if (Regex.IsMatch(emailId, EMAIL_REGEX))
+                    return "Correct Entry";
+                else
+                    throw new Exception();
+            }
+            catch
+            {
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.WRONG_EMAIL, "invalid email Id");
+
+            }
         }
 
         // UC4 Mobile number validation
-        public Boolean MobileNumberValidation(string mobileNumber)
+        public string IsValidMobileNumber(string mobileNumber)
         {
-            Regex regex = new Regex("^[0-9]{2}[ ][0-9]{10}$");
-            if (regex.IsMatch(mobileNumber))
-                return true;
-            else
-                return false;
-        }
+            try
+            {
+                if (Regex.IsMatch(mobileNumber, MOBILENUMBER_REGEX))
+                    return "Correct Entry";
+                else
+                    throw new Exception();
+            }
+            catch
+            {
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.WRONG_MOBILENUMBER, "invalid mobile number");
 
+            }
+        }
         // UC5 Password validation by rule 1
-        public Boolean Password1Validation(string password)
+        public string IsValidPassword(string password)
         {
-            Regex regex = new Regex("^[a-zA-Z]{8,}$");
-            if (regex.IsMatch(password))
-                return true;
-            else
-                return false;
+            try
+            {
+                if (Regex.IsMatch(password, PASSWORD_REGEX))
+                    return "Correct Entry";
+                else
+                    throw new Exception();
+            }
+            catch
+            {
+                throw new UserRegistrationCustomException(UserRegistrationCustomException.ExceptionType.WRONG_PASSWORD, "invalid password");
+
+            }
         }
 
-        // UC6 Password validation by rule 2
-        public Boolean Password2Validation(string password2)
-        {
-            Regex regex = new Regex("^(=?.*[A-Z]).{8,}$");
-            if (regex.IsMatch(password2))
-                return true;
-            else
-                return false;
-        }
-
-        // UC7 Password validation by rule 3
-        public Boolean Password3Validation(string password3)
-        {
-            Regex regex = new Regex("^(?=.*[A-Z])(?=.*[0-9]).{8,}$");
-            if (regex.IsMatch(password3))
-                return true;
-            else
-                return false;
-        }
-
-        // UC8 Password validation by rule 4
-        public Boolean Password4Validation(string password4)
-        {
-            Regex regex = new Regex("^(?=.*[A-Z])(?=.*[0-9])(?=.*[^0-9a-zA-Z])(?!.*[^0-9a-zA-Z].*[^0-9a-zA-Z]).{8,}$");
-            if (regex.IsMatch(password4))
-                return true;
-            else
-                return false;
-        }
-
-        // UC9 Valid all email sample
-        public static string Email_Regex = "^[a-zA-Z0-9]+([.+_-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]+([.][a-zA-Z]{2})?$";
-        public bool ValidateEmailSet(string email)
-        {
-            return Regex.IsMatch(email, Email_Regex);
-        }
-
-        // UC10 Validation check by unit test
-        public string MoodAnalyser(string input)
-        {
-            if (input.Contains("HAPPY"))
-                return "HAPPY";
-            else
-                return "SAD";
-        }
     }
 }
-
